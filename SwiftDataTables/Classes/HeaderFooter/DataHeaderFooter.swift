@@ -22,13 +22,13 @@ class DataHeaderFooter: UICollectionReusableView {
         super.awakeFromNib()
         let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(DataHeaderFooter.didTapView))
         self.addGestureRecognizer(tapGesture)
+        self.backgroundColor = #colorLiteral(red: 0.1123891547, green: 0.1973366141, blue: 0.4300764501, alpha: 1)
     }
     
     func setupView(viewModel: DataHeaderFooterViewModel) {
-        self.titleLabel.text = viewModel.data
         self.titleLabel.textColor = UIColor.white
+        self.titleLabel.text = viewModel.data
         self.sortingImageView.image = viewModel.imageForSortingElement
-        self.backgroundColor = UIColor(red:0.11, green:0.20, blue:0.73, alpha:1.00)
     }
     
     @objc func didTapView(){
