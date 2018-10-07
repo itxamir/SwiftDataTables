@@ -205,11 +205,15 @@ public class SwiftDataTable: UIView {
     
     fileprivate(set) open lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
+        
+        var textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
+        textFieldInsideSearchBar?.textColor = UIColor.white
+        
         searchBar.searchBarStyle = .minimal;
         searchBar.placeholder = "Search";
         searchBar.delegate = self
-        searchBar.backgroundColor = .white
-        searchBar.barTintColor = UIColor.white
+        searchBar.backgroundColor = UIColor(red:0.11, green:0.20, blue:0.43, alpha:1.00)
+        searchBar.barTintColor = UIColor(red:0.11, green:0.20, blue:0.43, alpha:1.00)
         self.addSubview(searchBar)
         return searchBar
     }()
@@ -337,11 +341,12 @@ public class SwiftDataTable: UIView {
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     deinit {
-        NotificationCenter.default.removeObserver(self, name: Notification.Name.UIApplicationWillChangeStatusBarOrientation, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIApplication.willChangeStatusBarOrientationNotification, object: nil)
     }
     func registerObservers(){
-        NotificationCenter.default.addObserver(self, selector: #selector(deviceOrientationWillChange), name: Notification.Name.UIApplicationWillChangeStatusBarOrientation, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(deviceOrientationWillChange), name: UIApplication.willChangeStatusBarOrientationNotification, object: nil)
     }
     @objc func deviceOrientationWillChange() {
         self.layout?.clearLayoutCache()
