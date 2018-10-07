@@ -76,8 +76,7 @@ extension DataHeaderFooterViewModel: CollectionViewSupplementaryElementRepresent
             else {
                 return UICollectionReusableView()
         }
-        
-        headerView.setup(viewModel: self)
+        headerView.setupView(viewModel: self)
         switch kind {
         case SwiftDataTable.SupplementaryViewType.columnHeader.rawValue:
             headerView.didTapEvent = { [weak self] in
