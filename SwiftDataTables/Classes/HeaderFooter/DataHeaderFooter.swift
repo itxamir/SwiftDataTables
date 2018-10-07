@@ -24,11 +24,13 @@ class DataHeaderFooter: UICollectionReusableView {
         self.addGestureRecognizer(tapGesture)
     }
     
-    func setup(viewModel: DataHeaderFooterViewModel) {
+    func setupView(viewModel: DataHeaderFooterViewModel) {
         self.titleLabel.text = viewModel.data
         self.sortingImageView.image = viewModel.imageForSortingElement
-        self.backgroundColor = .white
+        self.backgroundColor = UIColor.blue
+        self.titleLabel.backgroundColor = UIColor.white
     }
+    
     @objc func didTapView(){
         self.didTapEvent?()
     }
